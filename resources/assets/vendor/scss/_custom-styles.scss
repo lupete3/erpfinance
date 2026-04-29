@@ -1,0 +1,80 @@
+/* ===========================
+   Custom Sneat Theme Overrides
+   =========================== */
+
+/* 🎨 Définition des variables principales */
+:root {
+  --bs-primary: #163f93;   /* Bleu foncé du logo */
+  --bs-secondary: #6EB8F1; /* Bleu clair des triangles */
+  --bs-primary-rgb: 29, 55, 108;
+  --bs-secondary-rgb: 110, 184, 241;
+}
+
+/* ===========================
+   Boutons
+   =========================== */
+.btn-primary {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+  color: #fff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #162B54 !important; /* variante foncée */
+  border-color: #163f93 !important;
+  color: #fff !important;
+}
+
+.btn-secondary {
+  background-color: var(--bs-secondary) !important;
+  border-color: var(--bs-secondary) !important;
+  color: #fff !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+  background-color: #4a9bd4 !important; /* variante foncée */
+  border-color: #4a9bd4 !important;
+  color: #fff !important;
+}
+
+/* ===========================
+   Badges
+   =========================== */
+.badge.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.badge.bg-secondary {
+  background-color: var(--bs-secondary) !important;
+}
+
+
+.menu-inner .menu-item.active > .menu-link {
+  background-color: var(--bs-secondary) !important;
+  color: #fff !important;
+}
+
+/* ===========================
+   Liens
+   =========================== */
+a {
+  color: var(--bs-primary);
+}
+
+a:hover {
+  color: var(--bs-secondary);
+}
+
+/* ===========================
+   Autres éléments (inputs, focus)
+   =========================== */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bs-primary) !important;
+
+}
+
