@@ -22,9 +22,14 @@ $dotations = computed(function () {
 ?>
 
 <div>
-    <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Supervision /</span> Dotations Reçues
-    </h4>
+    <div class="d-flex align-items-center justify-content-between">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">Supervision /</span> Dotations Reçues
+        </h4>
+        <a href="{{ route('finance.manager.dotations.create') }}" class="btn btn-primary mb-4">
+            <i class="bx bx-plus me-1"></i> Enregistrer Dotation
+        </a>
+    </div>
 
     @if(Auth::user()->hasRoleString('Boss'))
         <div class="card mb-4">

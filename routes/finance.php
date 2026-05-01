@@ -43,6 +43,7 @@ Route::middleware(['auth', 'verified', 'check.subscription'])->prefix('finance')
         Volt::route('/expenses', 'manager.expenses.index')->name('expenses.index');
         Volt::route('/expenses/create', 'manager.expenses.create')->name('expenses.create');
         Volt::route('/dotations', 'manager.dotations.index')->name('dotations.index');
+        Volt::route('/dotations/create', 'manager.dotations.create')->name('dotations.create');
 
         // Reporting Gérant
         Volt::route('/reports', 'manager.reports.index')->name('reports.index');
