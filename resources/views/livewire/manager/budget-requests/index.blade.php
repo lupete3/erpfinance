@@ -21,6 +21,19 @@ $toggleDetails = function ($id) {
     $this->expandedId = ($this->expandedId == $id) ? null : $id;
 };
 
+$delete = function ($id) {
+    $req = BudgetRequest::where('store_id', Auth::user()->store_id)->findOrFail($id);
+    if ($req->status !== 'en_attente') {
+        notyf()->error(__('Vous ne pouvez pas supprimer une demande déjà traitée.'));
+        return;
+    }
+    
+    $req->items()->delete();
+    $req->delete();
+    
+    notyf()->success(__('Demande supprimée avec succès.'));
+};
+
 ?>
 
 <div>
@@ -77,11 +90,21 @@ $toggleDetails = function ($id) {
                                 @endif
                             </td>
                             <td>
-                                @if($req->boss_note)
-                                    <button class="btn btn-sm btn-icon btn-label-warning" title="{{ $req->boss_note }}">
-                                        <i class="bx bx-comment-dots"></i>
-                                    </button>
-                                @endif
+                                <div class="d-flex gap-1 align-items-center">
+                                    @if($req->status == 'en_attente')
+                                        <a href="{{ route('finance.manager.budget-requests.edit', $req->id) }}" class="btn btn-sm btn-icon btn-outline-primary" title="Modifier">
+                                            <i class="bx bx-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-icon btn-outline-danger" title="Supprimer" wire:click="delete({{ $req->id }})" wire:confirm="Êtes-vous sûr de vouloir supprimer cette demande ?">
+                                            <i class="bx bx-trash"></i>
+                                        </button>
+                                    @endif
+                                    @if($req->boss_note)
+                                        <button class="btn btn-sm btn-icon btn-label-warning" title="{{ $req->boss_note }}">
+                                            <i class="bx bx-comment-dots"></i>
+                                        </button>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                         @if($expandedId == $req->id)

@@ -52,6 +52,7 @@ Route::middleware(['auth', 'verified', 'check.subscription'])->prefix('finance')
         // États de besoin (Gérant)
         Volt::route('/budget-requests', 'manager.budget-requests.index')->name('budget-requests.index');
         Volt::route('/budget-requests/create', 'manager.budget-requests.create')->name('budget-requests.create');
+        Volt::route('/budget-requests/{budgetRequest}/edit', 'manager.budget-requests.edit')->name('budget-requests.edit');
     });
 
 });
